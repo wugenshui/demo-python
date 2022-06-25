@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup	
 
 def get_content_and_next_url(urlPrefix, content): # content 为网页内容
-    soup = BeautifulSoup(content)	 # 得到文档的对象
+    soup = BeautifulSoup(content, features="html.parser")	 # 得到文档的对象
 
     with open('1.html', 'wb') as f:
         f.write(bytes(soup.prettify(),'UTF-8'))
@@ -46,11 +46,18 @@ def get_content_and_next_url(urlPrefix, content): # content 为网页内容
     for img in imgs:
       if img['src'].startswith("/"):
         img['src'] = urlPrefix + img['src'] # 将地址补全
+    
+    mystyle = "div[class*=language-] pre, div[class*=language-] pre[class*=language-]{ background: black; }"
+    mystyle = " pre { background: black; }"
+    style = soup.style
+    # style = soup.select("style")
+    style.append(mystyle)
+    print(style)
 
     with open('2.html', 'wb') as f:
         f.write(bytes(soup.prettify(),'UTF-8'))
 
-url = 'http://192.168.0.51:8892/guide/'
+url = 'http://192.168.0.51:8892/guide/addTask.html'
 req = requests.get(url)
 
 urls = url.split('/')
