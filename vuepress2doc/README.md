@@ -8,3 +8,5 @@ pip freeze > requirements.txt
 
 # 单个依赖安装 
 pip install pdfkit -i https://mirrors.aliyun.com/pypi/simple/
+pip install requests -i https://mirrors.aliyun.com/pypi/simple/
+pip install beautifulsoup4 -i https://mirrors.aliyun.com/pypi/simple/
