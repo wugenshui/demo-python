@@ -27,20 +27,16 @@ def writePage(date,dateNum,num):
 
 #获取总页数
 def getPageNum(url):
-    try:
-        pageCode = getPage(url)
-        soup = BeautifulSoup(pageCode,'lxml')
-        td_code = soup.find('td',colspan='7')       #获取表格中包含页数的列
-        result = td_code.get_text().split(' ')      #将该列转换成列表，我们
-        #result = ['\n', '共125', '页', '/2484', '条记录', '首页', '上一页', '下一页', '末页', '当前第', '2', '页']
-        #用正则表达式从reslut[1]中提取出数字
-        list_num = re.findall("[0-9]{1}",result[1])
-        #将提取出来的数字转换成十进制的数值
-        page_num = int(list_num[0]+list_num[1]+list_num[2])
-        return page_num
-    except Exception as e:
-        print('Get Page Number Fail')
-        print("An error has occurred:" + e)
+      pageCode = getPage(url)
+      soup = BeautifulSoup(pageCode,'html.parser')
+      td_code = soup.find('td',colspan='7')       #获取表格中包含页数的列
+      result = td_code.get_text().split(' ')      #将该列转换成列表，我们
+      #result = ['\n', '共125', '页', '/2484', '条记录', '首页', '上一页', '下一页', '末页', '当前第', '2', '页']
+      #用正则表达式从reslut[1]中提取出数字
+      list_num = re.findall("[0-9]{1}",result[1])
+      #将提取出来的数字转换成十进制的数值
+      page_num = int(list_num[0]+list_num[1]+list_num[2])
+      return page_num
 
 #获取单页中的双色球中奖信息
 def getDC(url):
@@ -48,7 +44,7 @@ def getDC(url):
     for num in range(1,getPageNum(url)+1):
         print('begin get page:'+str(num))
         href = 'http://kaijiang.zhcw.com/zhcw/html/ssq/list_'+str(num)+'.html'
-        page = BeautifulSoup(getPage(href),'lxml')
+        page = BeautifulSoup(getPage(href),'html.parser')
         em_list = page.find_all('em')   #获取该页面中的em内容,即中奖编号所在
         td_list = page.find_all('td',{'align':'center'})    #获取该页面中的开奖日期，期号等信息
 
