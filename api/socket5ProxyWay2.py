@@ -14,9 +14,14 @@ print(f"全局代理设置成功，当前代理为:{host}:{port}")
 # 例如，您可以使用requests库与SOCKS代理进行如下操作：
 import requests
 
-response = requests.get("https://www.google.com")
+url = "https://www.google.com"
+response = requests.get(url)
 print(response.text)
 
 # 在完成后不要忘记关闭代理
 socks.setdefaultproxy()
 print("全局代理已关闭")
+
+# 验证代理关闭后无法请求的效果
+response = requests.get(url)
+print(response.text)
