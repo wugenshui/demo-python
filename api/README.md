@@ -16,8 +16,3 @@ pip install "uvicorn[standard]"
 # 后台运行，生产环境不需要开启--reload
 nohup uvicorn fastApiDemo:app --reload --port 8000 --host 0.0.0.0 &
 ```
-
-# 安装依赖 
-# 1. 
-# 2. 服务端启动，热重载 
-# 接口直接访问：http://localhost:8000/docs
