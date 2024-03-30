@@ -16,7 +16,7 @@ pyautogui.click()
 pyautogui.typewrite('Hello world!\n', interval=0.2)
 
 # 截图
-print(pyautogui.screenshot())
+pyautogui.screenshot("screenshot.png")
 
 # 弹出框
 pyautogui.alert('This displays some text with an OK button.')
