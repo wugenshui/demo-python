@@ -3,6 +3,7 @@ import numpy as np
 import cv2
 from ocr_paddle import ocr_with_paddleocr
 from ocr_easyocr import ocr_with_easyocr
+from ocr_pytesseract import ocr_with_tesseract
 
  
 def preprocess_image(image_path):
@@ -44,6 +45,6 @@ if __name__ == "__main__":
     image_path = "example.png"
     preprocessed_img = preprocess_image(image_path)
     if preprocessed_img:
-        result = ocr_with_easyocr(preprocessed_img)
+        result = ocr_with_tesseract(preprocessed_img)
         print("预处理后识别结果:")
         print(result)

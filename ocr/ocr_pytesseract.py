@@ -18,7 +18,8 @@ def ocr_with_tesseract(image_path, lang='eng'):
     try:
         # 打开图片文件
         img = Image.open(image_path)
-        
+
+        pytesseract.pytesseract.tesseract_cmd = r'D:\lib\Tesseract-OCR\tesseract.exe'
         # 使用Tesseract进行OCR识别
         text = pytesseract.image_to_string(img, lang=lang)
         
