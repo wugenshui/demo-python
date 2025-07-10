@@ -1,12 +1,12 @@
 # OCR
 
-## EasyOCR
+## EasyOCR(效果最佳)
 
 - EasyOCR是一个基于深度学习的OCR库，支持多种语言，识别准确率较高。
 
 pip install easyocr
 
-## PaddleOCR
+## PaddleOCR(未成功运行)
 
 - PaddleOCR是百度开源的OCR工具，支持多种语言和场景。
 

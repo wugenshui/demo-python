@@ -45,6 +45,7 @@ if __name__ == "__main__":
     image_path = "example.png"
     preprocessed_img = preprocess_image(image_path)
     if preprocessed_img:
-        result = ocr_with_tesseract(preprocessed_img)
+        # result = ocr_with_easyocr(preprocessed_img)
+        result = ocr_with_paddleocr(preprocessed_img)
         print("预处理后识别结果:")
         print(result)
